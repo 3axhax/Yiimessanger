@@ -53,7 +53,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		//'online',
 		array(
 			'name' => 'online',
-			'value' => $data,
+			'value' => '$data->online ? online : offline',
 		),
 		array(
 			'class'=>'CButtonColumn',
