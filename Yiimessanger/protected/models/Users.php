@@ -93,6 +93,11 @@ class Users extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getOnlineStatus($data)
+	{
+		return $data ? 'online' : 'offline';
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

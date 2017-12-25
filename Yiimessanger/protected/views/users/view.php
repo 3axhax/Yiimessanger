@@ -21,11 +21,15 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		//'id',
 		'name',
 		'password',
 		'email',
 		'status',
-		'online',
+		//'online',
+		array(
+			'name' => 'online',
+			'value' => $data ? 'online' : 'offline',
+		),
 	),
 )); ?>
