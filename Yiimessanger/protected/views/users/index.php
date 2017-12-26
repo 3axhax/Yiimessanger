@@ -1,20 +1,39 @@
 <?php
 /* @var $this UsersController */
-/* @var $dataProvider CActiveDataProvider */
+/* @var $model Users */
 
-$this->breadcrumbs=array(
-	'Users',
-);
-
-/*$this->menu=array(
-	array('label'=>'Create Users', 'url'=>array('create')),
-	array('label'=>'Manage Users', 'url'=>array('admin')),
-);*/
 ?>
 
-<h1>Users</h1>
+<h1>Users List</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'users-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+	'columns'=>array(
+		'name',
+		'email',
+		'status',
+		array(
+			'name' => 'online',
+            'type' => 'boolean',
+		),
+		array(
+			'class'=>'CButtonColumn',
+            'template' => '{view}&nbsp;{message}',
+            'buttons'=>array
+            (
+                'view' => array
+                (
+                    'imageUrl' => Yii::app()->request->baseUrl.'/images/view-16.png',
+                ),
+                'message' => array
+                (
+                    'label'=>'Sent message',
+					'url'=>'Yii::app()->getUrlManager()->createUrl("/messages/create", array("id_response" => $data->id))',
+                    'imageUrl' => Yii::app()->request->baseUrl.'/images/message-16.png',
+                ),
+            ),
+		),
+	),
 )); ?>

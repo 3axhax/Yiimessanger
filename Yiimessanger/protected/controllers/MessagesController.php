@@ -29,7 +29,7 @@ class MessagesController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -51,8 +51,14 @@ class MessagesController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model = $this->loadModel($id);
+		if ($model->id_response == Yii::app()->user->id)
+		{
+			$model->seen = 1;
+			$model->save();
+		}
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
 		));
 	}
 
@@ -66,67 +72,18 @@ class MessagesController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+        if (isset($_GET['id_response'])) $model->id_response = $_GET['id_response'];
 		if(isset($_POST['Messages']))
 		{
-			$model->attributes=$_POST['Messages'];
+			$model->attributes = $_POST['Messages'];
+			$model->id_sender = Yii::app()->user->id;
+			$model->time = new CDbExpression('NOW()');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Messages']))
-		{
-			$model->attributes=$_POST['Messages'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionAdmin()
-	{
-		$dataProvider=new CActiveDataProvider('Messages');
-		//$dataProvider=Messages::model()->findAll();
-		//$dataProvider->find();
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -141,7 +98,7 @@ class MessagesController extends Controller
 			$model->attributes=$_GET['Messages'];
 		if(($model->inOut = $_GET['inOut']) == 'in')$model->id_response = Yii::app()->user->id;
 		if(($model->inOut = $_GET['inOut']) == 'out')$model->id_sender = Yii::app()->user->id;
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
             'column' => $model->columnForMessages($model->inOut)
 		));

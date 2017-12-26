@@ -33,17 +33,12 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/users/index')),
 				array('label'=>'Profile ('.Yii::app()->user->name.')', 'url'=>array('/users/update', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Messages', 'url'=>array('/messages/index', 'inOut' => 'in'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Messages '. ((($count = Messages::model()->count('id_response="'.Yii::app()->user->id.'" and seen="0"')) == 0) ? '' : '('.$count.')'), 'url'=>array('/messages/index', 'inOut' => 'in'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
 
 	<?php echo $content; ?>
 

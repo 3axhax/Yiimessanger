@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 26 2017 г., 14:08
--- Версия сервера: 5.7.16
+-- Время создания: Дек 26 2017 г., 22:25
+-- Версия сервера: 5.5.53
 -- Версия PHP: 7.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -40,10 +40,13 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `id_sender`, `id_response`, `message`, `time`, `seen`) VALUES
-(1, 1, 2, 'HI fghkjhadfkjh sfdhjgkjh kajhfg kjh dfashkjkha dfhkjh adsfkjhkewhjad kjhasdfkj kjhkjahdkjhekj ', '2017-12-26 05:25:14', 0),
-(2, 2, 1, 'HI too', '2017-12-26 05:26:14', 0),
-(3, 4, 5, 'hi 5', '2017-12-18 11:13:32', 0),
-(4, 1, 6, 'fdgagfa', '2017-12-14 10:15:36', 0);
+(1, 1, 2, 'HI fghkjhadfkjh sfdhjgkjh kajhfg kjh dfashkjkha dfhkjh adsfkjhkewhjad kjhasdfkj kjhkjahdkjhekj ', '2017-12-26 05:25:14', 1),
+(2, 2, 1, 'HI too', '2017-12-26 05:26:14', 1),
+(3, 4, 1, 'hi 5', '2017-12-18 11:13:32', 1),
+(4, 1, 6, 'fdgagfa', '2017-12-14 10:15:36', 0),
+(5, 1, 2, 'dfgh', '2017-12-26 23:31:08', 1),
+(6, 2, 1, 'HI admin', '2017-12-27 00:09:09', 1),
+(7, 2, 4, 'Helo Brother', '2017-12-27 00:16:37', 0);
 
 -- --------------------------------------------------------
 
@@ -66,7 +69,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `status`, `online`) VALUES
 (1, 'admin', 'admin', 'admin@admin.ru', 'Hello World!', 1),
-(2, 'user', 'user', 'user@user.ru', 'User	here', 1),
+(2, 'user', 'user', 'user@user.ru', 'User here', 1),
 (4, 'user1', '123', '123', '1123', 0),
 (5, '1', '1', 'admin1@admin.ru', 'asdf', 1),
 (6, '123', '1', '3axhax@mail.ru', '1', 1),
@@ -96,7 +99,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --

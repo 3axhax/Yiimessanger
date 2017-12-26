@@ -94,6 +94,9 @@ class Messages extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'sort' => array(
+                'defaultOrder' => 'time DESC',
+            ),
 		));
 	}
 
@@ -110,15 +113,57 @@ class Messages extends CActiveRecord
 			),
 			'message',
 			'time',
-			'seen',
+			array(
+				'name' => 'seen',
+				'type' => 'boolean',
+			),
 			array(
 				'class'=>'CButtonColumn',
+				'template' => '{view}'.(($inOut == 'in') ? '&nbsp;{message}' : ''),
+				'buttons'=>array
+				(
+					'view' => array
+					(
+						'imageUrl' => Yii::app()->request->baseUrl.'/images/view-16.png',
+					),
+					'message' => array
+					(
+						'label'=>'Answer',
+						'url'=>'Yii::app()->getUrlManager()->createUrl("/messages/create", array("id_response" => $data->id_sender))',
+						'imageUrl' => Yii::app()->request->baseUrl.'/images/answer-16.png',
+					),
+				),
 			),
 		);
-		if ($inOut == 'in') unset($columns[1]);
-		if ($inOut == 'out') unset($columns[0]);
+		if ($inOut == 'in')
+		{
+			unset($columns[1]);
+			$columns[4] = array(
+                'name' => 'seen',
+                'value' => '(($data->seen == 0)? "No ".CHtml::image(Yii::app()->request->baseUrl."/images/new-20.png","New") : "Yes")',
+                'type' => 'html',
+            );
+		}
+		if ($inOut == 'out')
+		{
+			unset($columns[0]);
+		}
 		return $columns;
 	}
+
+    public static function getUserList()
+    {
+        //$userList = Users::model()->findAll();
+        //$userList = new Users();
+        $criteria=new CDbCriteria;
+        $criteria->select='name, id';
+        $users = Users::model()->findAll($criteria);
+        foreach ($users as $user)
+        {
+            $userList[$user->id] = $user->name;
+        }
+        return $userList;
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

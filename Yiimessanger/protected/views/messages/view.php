@@ -2,30 +2,27 @@
 /* @var $this MessagesController */
 /* @var $model Messages */
 
-$this->breadcrumbs=array(
-	'Messages'=>array('index'),
-	$model->id,
-);
-
 $this->menu=array(
-	array('label'=>'List Messages', 'url'=>array('index')),
-	array('label'=>'Create Messages', 'url'=>array('create')),
-	array('label'=>'Update Messages', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Messages', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Messages', 'url'=>array('admin')),
+	array('label'=>'Incoming Messages', 'url'=>array('index', 'inOut' => 'in')),
+	array('label'=>'Outgoing Messages', 'url'=>array('index', 'inOut' => 'out')),
+	(($model->id_sender != Yii::app()->user->id) ? array('label'=>'Answer', 'url'=>array('create', 'id_response' => $model->id_sender)) : NULL),
 );
 ?>
 
-<h1>View Messages #<?php echo $model->id; ?></h1>
+<h1>View Message</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'id_sender',
-		'id_response',
+		array(
+			'name' => 'id_sender',
+			'value' => Users::model()->findByPk($model->id_sender)->name,
+		),
+		array(
+			'name' => 'id_response',
+			'value' => Users::model()->findByPk($model->id_response)->name,
+		),
 		'message',
 		'time',
-		'seen',
 	),
 )); ?>

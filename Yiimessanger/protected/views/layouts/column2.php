@@ -5,7 +5,7 @@
 		<?php echo $content; ?>
 	</div><!-- content -->
 </div>
-<?php if(Yii::app()->controller->id == 'messages'): ?>
+<?php if(!Yii::app()->user->isGuest): ?>
 <div class="span-5 last">
 	<div id="sidebar">
 	<?php
