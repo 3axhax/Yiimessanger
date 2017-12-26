@@ -543,3 +543,552 @@ REQUEST_URI=/Yiimessanger/index.php?r=users/admin
 in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\users\admin.php (44)
 in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (142)
 in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 08:31:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='1' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1.
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php (27)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php (54)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php (94)
+2017/12/26 08:31:04 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='1' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1 in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryRow()
+#2 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1464): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php(27): CActiveRecord->find('name=:name, pas...', Array)
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#5 D:\OpenServer\domains\Yiimessanger\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php(94): CModel->validate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('login')
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=site/login
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=site/login
+---
+2017/12/26 08:31:38 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='admin' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1.
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php (27)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php (54)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php (94)
+2017/12/26 08:31:38 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='admin' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1 in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryRow()
+#2 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1464): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php(27): CActiveRecord->find('name=:name, pas...', Array)
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#5 D:\OpenServer\domains\Yiimessanger\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php(94): CModel->validate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('login')
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=site/login
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=site/login
+---
+2017/12/26 08:32:36 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='admin' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1.
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php (27)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php (54)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php (94)
+2017/12/26 08:32:36 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='admin' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1 in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryRow()
+#2 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1464): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php(27): CActiveRecord->find('name=:name, pas...', Array)
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#5 D:\OpenServer\domains\Yiimessanger\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php(94): CModel->validate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('login')
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=site/login
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=site/login
+---
+2017/12/26 08:32:38 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='admin' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1.
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php (27)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php (54)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php (94)
+2017/12/26 08:32:38 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password='admin' LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=:name, password=:password LIMIT 1 in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryRow()
+#2 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1464): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php(27): CActiveRecord->find('name=:name, pas...', Array)
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#5 D:\OpenServer\domains\Yiimessanger\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php(94): CModel->validate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('login')
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=site/login
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=site/login
+---
+2017/12/26 08:37:40 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'admin' in 'where clause'. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=admin LIMIT 1.
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php (27)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php (54)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php (94)
+2017/12/26 08:37:40 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'admin' in 'where clause'. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name=admin LIMIT 1 in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryRow()
+#2 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1464): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php(27): CActiveRecord->find('name=admin')
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#5 D:\OpenServer\domains\Yiimessanger\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php(94): CModel->validate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('login')
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=site/login
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=site/login
+---
+2017/12/26 09:42:39 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password="1" LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name="admin", password="1" LIMIT 1.
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php (27)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php (54)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php (94)
+2017/12/26 09:42:39 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' password="1" LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `users` `t` WHERE name="admin", password="1" LIMIT 1 in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryRow()
+#2 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1464): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\components\UserIdentity.php(27): CActiveRecord->find('name="admin", p...')
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#5 D:\OpenServer\domains\Yiimessanger\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\SiteController.php(94): CModel->validate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('login')
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=site/login
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=site/login
+---
+2017/12/26 11:02:15 [error] [exception.CException] CException: Property "CRequiredValidator.off" is not defined. in D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php:173
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\validators\CValidator.php(177): CComponent->__set('off', 'create')
+#1 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(287): CValidator::createValidator('off', Object(Users), Array, Array)
+#2 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(260): CModel->createValidators()
+#3 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(547): CModel->getValidators()
+#4 D:\OpenServer\domains\Yiimessanger\framework\base\CModel.php(468): CModel->getSafeAttributeNames()
+#5 D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php(152): CModel->setAttributes(Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(162): CComponent->__set('attributes', Array)
+#7 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php(72): CActiveRecord->__set('attributes', Array)
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): UsersController->actionCreate()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('create')
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('users/create')
+#19 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=users/create
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=users/create
+---
+2017/12/26 11:03:17 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1364 Field 'online' doesn't have a default value. The SQL statement executed was: INSERT INTO `users` (`name`, `password`, `email`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (73)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 11:03:17 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1364 Field 'online' doesn't have a default value. The SQL statement executed was: INSERT INTO `users` (`name`, `password`, `email`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3) in D:\OpenServer\domains\Yiimessanger\framework\db\CDbCommand.php:358
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(1083): CDbCommand->execute()
+#1 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(811): CActiveRecord->insert(NULL)
+#2 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php(73): CActiveRecord->save()
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): UsersController->actionCreate()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('create')
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('users/create')
+#14 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=users/create
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=users/create
+---
+2017/12/26 11:21:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "user/update". in D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#1 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=user/update&id=admin
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=users/index
+---
+2017/12/26 11:26:33 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "user/update". in D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#1 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=user/update&id=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 11:28:12 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "user/update". in D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#1 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=user/update&id=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=users/update&id=1
+---
+2017/12/26 11:30:20 [warning] [application] Failed to set unsafe attribute "confirm_password" of "Users".
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (96)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 11:30:34 [warning] [application] Failed to set unsafe attribute "confirm_password" of "Users".
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (96)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 11:31:32 [warning] [application] Failed to set unsafe attribute "confirm_password" of "Users".
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (96)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 11:34:30 [warning] [application] Failed to set unsafe attribute "confirm_password" of "Users".
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (96)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 11:34:36 [warning] [application] Failed to set unsafe attribute "confirm_password" of "Users".
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php (96)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 12:42:29 [error] [exception.CException] CException: Messages and its behaviors do not have a method or closure named "getData". in D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(229): CComponent->__call('getData', Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(125): CActiveRecord->__call('getData', Array)
+#2 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(147): CListView->init()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(181): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#5 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\index.php(19): CBaseController->widget('zii.widgets.CLi...', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): CController->renderPartial('index', Array, true)
+#10 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(129): CController->render('index', Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#21 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#22 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 12:44:08 [error] [exception.CException] CException: Messages and its behaviors do not have a method or closure named "getData". in D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(229): CComponent->__call('getData', Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(125): CActiveRecord->__call('getData', Array)
+#2 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(147): CListView->init()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(181): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#5 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\index.php(19): CBaseController->widget('zii.widgets.CLi...', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): CController->renderPartial('index', Array, true)
+#10 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(129): CController->render('index', Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#21 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#22 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 12:44:11 [error] [exception.CException] CException: Messages and its behaviors do not have a method or closure named "getData". in D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(229): CComponent->__call('getData', Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(125): CActiveRecord->__call('getData', Array)
+#2 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(147): CListView->init()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(181): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#5 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\index.php(19): CBaseController->widget('zii.widgets.CLi...', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): CController->renderPartial('index', Array, true)
+#10 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(129): CController->render('index', Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#21 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#22 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 12:44:15 [error] [exception.CException] CException: Messages and its behaviors do not have a method or closure named "getData". in D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\db\ar\CActiveRecord.php(229): CComponent->__call('getData', Array)
+#1 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(125): CActiveRecord->__call('getData', Array)
+#2 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(147): CListView->init()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(181): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#5 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\index.php(19): CBaseController->widget('zii.widgets.CLi...', Array)
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): CController->renderPartial('index', Array, true)
+#10 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(129): CController->render('index', Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#21 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#22 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 13:12:51 [error] [exception.ParseError] ParseError: syntax error, unexpected ';' in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php:126
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(276): CWebApplication->createController('index/')
+#1 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#2 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 13:13:10 [error] [exception.Error] Error: Call to a member function getData() on array in D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php:125
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#1 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(147): CListView->init()
+#2 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(181): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#3 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\index.php(19): CBaseController->widget('zii.widgets.CLi...', Array)
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#5 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): CController->renderPartial('index', Array, true)
+#8 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(129): CController->render('index', Array)
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#20 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#21 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php
+---
+2017/12/26 13:19:45 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (D:\OpenServer\domains\Yiimessanger\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\utils\CFormatter.php(128): CFormatter->formatText()
+#1 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CDataColumn.php(145): CFormatter->format()
+#2 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridColumn.php(231): CDataColumn->getDataCellContent()
+#3 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridColumn.php(154): CDataColumn->renderDataCellContent()
+#4 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php(639): CDataColumn->renderDataCell()
+#5 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php(623): CGridView->renderDataCell()
+#6 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php(579): CGridView->renderTableRow()
+#7 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php(489): CGridView->renderTableBody()
+#8 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#9 unknown(0): CGridView->renderSection()
+#10 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback()
+#11 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\CBaseListView.php(149): CGridView->renderContent()
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(182): CGridView->run()
+#13 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\admin.php(44): MessagesController->widget()
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require()
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): MessagesController->renderInternal()
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): MessagesController->renderFile()
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): MessagesController->renderPartial()
+#18 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(144): MessagesController->render()
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#20 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams()
+#21 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): MessagesController->runAction()
+#22 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#24 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): MessagesController->filterAccessControl()
+#25 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#26 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#27 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): MessagesController->runActionWithFilters()
+#28 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): MessagesController->run()
+#29 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#30 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#31 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CWebApplication->run()
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\admin.php (44)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php (144)
+in D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php (13)
+2017/12/26 13:56:56 [error] [exception.CException] CException: Property "MessagesController.controller" is not defined. in D:\OpenServer\domains\Yiimessanger\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\layouts\column2.php(3): CComponent->__get('controller')
+#1 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(787): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(147): CController->render('admin', Array)
+#5 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#16 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=users/index
+---
+2017/12/26 14:06:10 [error] [exception.ParseError] ParseError: syntax error, unexpected '?>' in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\layouts\column2.php:3
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#1 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(787): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#2 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(147): CController->render('admin', Array)
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#14 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&idUser=1
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=users/index
+---
+2017/12/26 14:06:12 [error] [exception.ParseError] ParseError: syntax error, unexpected '?>' in D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\layouts\column2.php:3
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#1 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(787): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#2 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\UsersController.php(134): CController->render('admin', Array)
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): UsersController->actionIndex()
+#4 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#14 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=users/index
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=messages/index&idUser=1
+---
+2017/12/26 14:32:57 [error] [exception.CException] CException: The column must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional. in D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php:413
+Stack trace:
+#0 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php(383): CGridView->createDataColumn('')
+#1 D:\OpenServer\domains\Yiimessanger\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#2 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(147): CGridView->init()
+#3 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(181): CBaseController->createWidget('zii.widgets.gri...', Array)
+#4 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\views\messages\admin.php(44): CBaseController->widget('zii.widgets.gri...', Array)
+#5 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(126): require('D:\\OpenServer\\d...')
+#6 D:\OpenServer\domains\Yiimessanger\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\OpenServer\\d...', Array, true)
+#7 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(872): CBaseController->renderFile('D:\\OpenServer\\d...', Array, true)
+#8 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(785): CController->renderPartial('admin', Array, true)
+#9 D:\OpenServer\domains\Yiimessanger\Yiimessanger\protected\controllers\MessagesController.php(145): CController->render('admin', Array)
+#10 D:\OpenServer\domains\Yiimessanger\framework\web\actions\CInlineAction.php(49): MessagesController->actionIndex()
+#11 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#15 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 D:\OpenServer\domains\Yiimessanger\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(291): CFilterChain->run()
+#18 D:\OpenServer\domains\Yiimessanger\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(282): CController->run('index')
+#20 D:\OpenServer\domains\Yiimessanger\framework\web\CWebApplication.php(141): CWebApplication->runController('messages/index')
+#21 D:\OpenServer\domains\Yiimessanger\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#22 D:\OpenServer\domains\Yiimessanger\Yiimessanger\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/Yiimessanger/index.php?r=messages/index&inOut=out
+HTTP_REFERER=http://yiimessanger/Yiimessanger/index.php?r=messages/index&inOut=in
+---

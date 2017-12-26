@@ -1,26 +1,28 @@
 <?php
 
 /**
- * This is the model class for table "users".
+ * This is the model class for table "messages".
  *
- * The followings are the available columns in table 'users':
+ * The followings are the available columns in table 'messages':
  * @property integer $id
- * @property string $name
- * @property string $password
- * @property string $email
- * @property string $status
- * @property integer $online
+ * @property integer $id_sender
+ * @property integer $id_response
+ * @property string $message
+ * @property string $time
+ * @property integer $seen
  */
-
-class Users extends CActiveRecord
+class Messages extends CActiveRecord
 {
-	public $confirm_password;
+	
+	public $inOut = 'in';
+	public $column = false;
+
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'users';
+		return 'messages';
 	}
 
 	/**
@@ -31,17 +33,11 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, password, email, status', 'required'),
-			array('online', 'safe', 'on'=>'create'),
-			array('online', 'numerical', 'integerOnly'=>true),
-			array('name, password, email, status', 'length', 'max'=>255),
-			array('email', 'email'),
-			array('email', 'unique'),
-			array('confirm_password', 'required', 'on'=>'create, update'),
-			array('password', 'compare', 'compareAttribute'=>'confirm_password', 'on'=>'create, update'),
+			array('id_sender, id_response, message, time', 'required'),
+			array('id_sender, id_response, seen', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, password, email, status, online', 'safe', 'on'=>'search'),
+			array('id, id_sender, id_response, message, time, seen', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,12 +59,11 @@ class Users extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'password' => 'Password',
-			'confirm_password' => 'Confirm Password',
-			'email' => 'Email',
-			'status' => 'Status',
-			'online' => 'Online',
+			'id_sender' => 'Sender',
+			'id_response' => 'Recipient',
+			'message' => 'Message',
+			'time' => 'Time',
+			'seen' => 'Seen',
 		);
 	}
 
@@ -91,27 +86,45 @@ class Users extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('status',$this->status,true);
-		$criteria->compare('online',$this->online);
+		$criteria->compare('id_sender',$this->id_sender);
+		$criteria->compare('id_response',$this->id_response);
+		$criteria->compare('message',$this->message,true);
+		$criteria->compare('time',$this->time,true);
+		$criteria->compare('seen',$this->seen);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
-	public function getOnlineStatus($data)
+
+	public function columnForMessages($inOut)
 	{
-		return $data ? 'online' : 'offline';
+		$columns = array(
+			array(
+				'name' => 'id_sender',
+				'value' => 'Users::model()->findByPk($data->id_sender)->name',
+			),
+			array(
+				'name' => 'id_response',
+				'value' => 'Users::model()->findByPk($data->id_response)->name',
+			),
+			'message',
+			'time',
+			'seen',
+			array(
+				'class'=>'CButtonColumn',
+			),
+		);
+		if ($inOut == 'in') unset($columns[1]);
+		if ($inOut == 'out') unset($columns[0]);
+		return $columns;
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Users the static model class
+	 * @return Messages the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

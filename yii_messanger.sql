@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 25 2017 г., 18:19
+-- Время создания: Дек 26 2017 г., 14:08
 -- Версия сервера: 5.7.16
 -- Версия PHP: 7.1.0
 
@@ -23,6 +23,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `id_sender` int(11) NOT NULL,
+  `id_response` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL,
+  `seen` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `id_sender`, `id_response`, `message`, `time`, `seen`) VALUES
+(1, 1, 2, 'HI fghkjhadfkjh sfdhjgkjh kajhfg kjh dfashkjkha dfhkjh adsfkjhkewhjad kjhasdfkj kjhkjahdkjhekj ', '2017-12-26 05:25:14', 0),
+(2, 2, 1, 'HI too', '2017-12-26 05:26:14', 0),
+(3, 4, 5, 'hi 5', '2017-12-18 11:13:32', 0),
+(4, 1, 6, 'fdgagfa', '2017-12-14 10:15:36', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -32,7 +57,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `online` int(1) NOT NULL
+  `online` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -42,11 +67,20 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `status`, `online`) VALUES
 (1, 'admin', 'admin', 'admin@admin.ru', 'Hello World!', 1),
 (2, 'user', 'user', 'user@user.ru', 'User	here', 1),
-(4, 'user1', '123', '123', '1123', 0);
+(4, 'user1', '123', '123', '1123', 0),
+(5, '1', '1', 'admin1@admin.ru', 'asdf', 1),
+(6, '123', '1', '3axhax@mail.ru', '1', 1),
+(7, '123', '1', '3axhax@gmail.com', '1234', 0);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -59,10 +93,15 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

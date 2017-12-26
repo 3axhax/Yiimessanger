@@ -4,13 +4,13 @@
 
 $this->breadcrumbs=array(
 	'Users'=>array('index'),
-	'Manage',
+	'Users List',
 );
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Users', 'url'=>array('index')),
 	array('label'=>'Create Users', 'url'=>array('create')),
-);
+);*/
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Users</h1>
+<h1>Users List</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -47,16 +47,31 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		//'id',
 		'name',
-		'password',
+		//'password',
 		'email',
 		'status',
 		//'online',
 		array(
 			'name' => 'online',
-			'value' => '$data->online ? online : offline',
+			//'value' => '$data->online ? Yes : No',
+            'type' => 'boolean',
 		),
 		array(
 			'class'=>'CButtonColumn',
+            'template' => '{view}{message}',
+            'buttons'=>array
+            (
+                'view' => array
+                (
+                    'imageUrl' => Yii::app()->request->baseUrl.'/images/view-16.png',
+                ),
+                'message' => array
+                (
+                    'label'=>'Sent message',
+                    //'url'=>'Yii::app()->getUrlManager()->createUrl("admin/moderation/", array("id" => $data->id))',
+                    'imageUrl' => Yii::app()->request->baseUrl.'/images/message-16.png',
+                ),
+            ),
 		),
 	),
 )); ?>

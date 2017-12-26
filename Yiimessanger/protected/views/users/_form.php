@@ -32,6 +32,12 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'confirm_password'); ?>
+		<?php echo $form->passwordField($model,'confirm_password',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'confirm_password'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'email'); ?>
@@ -43,11 +49,11 @@
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'online'); ?>
-		<?php echo $form->textField($model,'online'); ?>
-		<?php echo $form->error($model,'online'); ?>
-	</div>
+	<!--<div class="row">
+		<?php /*echo $form->labelEx($model,'online'); */?>
+		<?php /*echo $form->textField($model,'online'); */?>
+		<?php /*echo $form->error($model,'online'); */?>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

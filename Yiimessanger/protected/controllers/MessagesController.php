@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends Controller
+class MessagesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,7 +28,7 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -62,14 +62,14 @@ class UsersController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Users('create');
+		$model=new Messages;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Users']))
+		if(isset($_POST['Messages']))
 		{
-			$model->attributes=$_POST['Users'];
+			$model->attributes=$_POST['Messages'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -91,14 +91,11 @@ class UsersController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Users']))
+		if(isset($_POST['Messages']))
 		{
-			$model->attributes=$_POST['Users'];
+			$model->attributes=$_POST['Messages'];
 			if($model->save())
-			{
-				Yii::app()->user->name = $_POST['Users']['name'];
-				$this->redirect(array('view', 'id' => $model->id));
-			}
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -121,17 +118,32 @@ class UsersController extends Controller
 	}
 
 	/**
+	 * Lists all models.
+	 */
+	public function actionAdmin()
+	{
+		$dataProvider=new CActiveDataProvider('Messages');
+		//$dataProvider=Messages::model()->findAll();
+		//$dataProvider->find();
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+
+	/**
 	 * Manages all models.
 	 */
 	public function actionIndex()
 	{
-		$model=new Users('search');
+		$model=new Messages('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Users']))
-			$model->attributes=$_GET['Users'];
-
+		if(isset($_GET['Messages']))
+			$model->attributes=$_GET['Messages'];
+		if(($model->inOut = $_GET['inOut']) == 'in')$model->id_response = Yii::app()->user->id;
+		if(($model->inOut = $_GET['inOut']) == 'out')$model->id_sender = Yii::app()->user->id;
 		$this->render('admin',array(
 			'model'=>$model,
+            'column' => $model->columnForMessages($model->inOut)
 		));
 	}
 
@@ -139,12 +151,12 @@ class UsersController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Users the loaded model
+	 * @return Messages the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Users::model()->findByPk($id);
+		$model=Messages::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -152,11 +164,11 @@ class UsersController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Users $model the model to be validated
+	 * @param Messages $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='users-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='messages-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

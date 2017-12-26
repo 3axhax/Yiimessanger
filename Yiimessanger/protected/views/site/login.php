@@ -44,8 +44,7 @@ $this->breadcrumbs=array(
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Login'); ?>
-		<?php echo CHtml::link('Sign up', array('/site/index'), array('class'=>'btn')); ?>
-		<?php echo CHtml::button('Sign up', array('onClick' => 'location.href="'.$this->createUrl('/site').'"'));?>
+		<?php echo CHtml::button('Sign up', array('onClick' => 'location.href="'.$this->createUrl('/users/create').'"'));?>
 	</div>
 
 <?php $this->endWidget(); ?>

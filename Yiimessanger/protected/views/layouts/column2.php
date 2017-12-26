@@ -1,10 +1,11 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-<div class="span-19">
+<div class="<?=(Yii::app()->controller->id == 'messages') ? 'span-19' : ''?>">
 	<div id="content">
 		<?php echo $content; ?>
 	</div><!-- content -->
 </div>
+<?php if(Yii::app()->controller->id == 'messages'): ?>
 <div class="span-5 last">
 	<div id="sidebar">
 	<?php
@@ -19,4 +20,5 @@
 	?>
 	</div><!-- sidebar -->
 </div>
+<?php endif;?>
 <?php $this->endContent(); ?>
