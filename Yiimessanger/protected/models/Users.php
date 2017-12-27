@@ -84,28 +84,47 @@ class Users extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($list = 'default')
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		//$criteria->compare('id',array('0'=>1, '1'=>2));
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('online',$this->online);
+        if ($list == 'contact list')$criteria->compare('id',Users::getContactList());
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 	
-	public function getOnlineStatus($data)
+	public function getOnlineStatus()
 	{
-		return $data ? 'online' : 'offline';
+        $sql = "SELECT yiisession.user_id FROM yiisession WHERE user_id=" . $this->id;
+        $command = Yii::app()->db->createCommand($sql);
+        $online = isset($command->queryAll()[0]) ? 1 : 0;
+
+		return $online;
 	}
+
+    public static function getContactList()
+    {
+        $user_id = Yii::app()->user->id;
+        $list = ContactList::model()->findAll('id_request="'.$user_id.'" or id_response="'.$user_id.'"');
+        //$contact_list = array();
+        foreach ($list as $contact)
+        {
+            if ($contact->id_request == $user_id) $contact_list[] = $contact->id_response;
+            if ($contact->id_response == $user_id) $contact_list[] = $contact->id_request;
+        }
+        return $contact_list;
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

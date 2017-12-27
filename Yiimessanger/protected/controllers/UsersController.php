@@ -111,13 +111,17 @@ class UsersController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$contact_list='default';
 		$model=new Users('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Users']))
 			$model->attributes=$_GET['Users'];
+		if($_GET['contact_list'])
+			$contact_list='contact list';
 
 		$this->render('index',array(
 			'model'=>$model,
+			'contact_list' => $contact_list,
 		));
 	}
 

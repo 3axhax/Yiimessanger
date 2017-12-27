@@ -1,14 +1,15 @@
 <?php
-/* @var $this UsersController */
-/* @var $model Users */
-
+$this->menu=array(
+	array('label'=>'All Users', 'url'=>array('index')),
+	array('label'=>'Contact List', 'url'=>array('index', 'contact_list' => true)),
+);
 ?>
 
 <h1>Users List</h1>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'users-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search($contact_list),
 	'filter'=>$model,
 	'columns'=>array(
 		'name',
@@ -16,6 +17,7 @@
 		'status',
 		array(
 			'name' => 'online',
+			'value' => '$data->getOnlineStatus()',
             'type' => 'boolean',
 		),
 		array(
