@@ -116,8 +116,7 @@ class Users extends CActiveRecord
     public static function getContactList()
     {
         $user_id = Yii::app()->user->id;
-        $list = ContactList::model()->findAll('id_request="'.$user_id.'" or id_response="'.$user_id.'"');
-        //$contact_list = array();
+        $list = ContactList::model()->findAll('(id_request="'.$user_id.'" or id_response="'.$user_id.'") and status=1' );
         foreach ($list as $contact)
         {
             if ($contact->id_request == $user_id) $contact_list[] = $contact->id_response;
@@ -125,7 +124,43 @@ class Users extends CActiveRecord
         }
         return $contact_list;
     }
-
+	public static function isUserInContactList($user_id)
+	{
+		$contact_list = Users::getContactList();
+		return ($contact_list === null ) ? false : in_array($user_id, $contact_list);
+	}
+	public static function getRequestList()
+	{
+		$user_id = Yii::app()->user->id;
+		$list = ContactList::model()->findAll('id_request="'.$user_id.'" and status=0' );
+		foreach ($list as $contact)
+		{
+			$request_list[] = $contact->id_response;
+		}
+		return $request_list;
+	}
+	public static function isRequestToContactList($user_id)
+	{
+		$request_list = Users::getRequestList();
+		return ($request_list === null ) ? false : in_array($user_id, $request_list);
+	}
+	public static function getRequestListToUser ($user_id)
+	{
+		$list = ContactList::model()->findAll('id_response="'.$user_id.'" and status=0' );
+		foreach ($list as $contact)
+		{
+			$request_list[] = $contact->id_response;
+		}
+		return $request_list;
+	}
+	public static function requestToContactList($user_id)
+	{
+		$contact = new ContactList();
+		$contact->id_request = Yii::app()->user->id;
+		$contact->id_response = $user_id;
+		$contact->status = 0;
+		$contact->save();
+	}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

@@ -25,13 +25,16 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'id_response'); ?>
-		<?php echo $form->dropDownList($model,'id_response', Messages::getUserList(), array('options' => [$model->id_response =>['selected'=>true]])); ?>
+		<?php echo $form->dropDownList($model,'id_response', Messages::getUserList($list), array('options' => [$model->id_response =>['selected'=>true]])); ?>
 		<?php echo $form->error($model,'id_response'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'message'); ?>
-		<?php echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50,)); ?>
+		<?php
+		if (Users::isUserInContactList($model->id_response)) echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50,));
+		else echo $form->textArea($model, 'message', array('rows' => 6, 'cols' => 50, 'disabled' => true, 'value' => 'Please add me to your contact list'));
+			?>
 		<?php echo $form->error($model,'message'); ?>
 	</div>
 
@@ -40,5 +43,4 @@
 	</div>
 
 <?php $this->endWidget(); ?>
-
 </div><!-- form -->

@@ -69,21 +69,25 @@ class MessagesController extends Controller
 	public function actionCreate()
 	{
 		$model=new Messages;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$list = 'contact';
+		if (isset($_GET['request'])) $list = 'request';
         if (isset($_GET['id_response'])) $model->id_response = $_GET['id_response'];
 		if(isset($_POST['Messages']))
 		{
 			$model->attributes = $_POST['Messages'];
 			$model->id_sender = Yii::app()->user->id;
 			$model->time = new CDbExpression('NOW()');
+			if ($list == 'request') {
+				$model->message = 'Please add me to your contact list';
+				Users::requestToContactList($model->id_response);
+			}
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index','inOut'=>'in'));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'list'=>$list,
 		));
 	}
 

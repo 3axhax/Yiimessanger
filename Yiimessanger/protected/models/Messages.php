@@ -151,16 +151,20 @@ class Messages extends CActiveRecord
 		return $columns;
 	}
 
-    public static function getUserList()
+    public static function getUserList($list = 'contact')
     {
-        //$userList = Users::model()->findAll();
-        //$userList = new Users();
         $criteria=new CDbCriteria;
         $criteria->select='name, id';
         $users = Users::model()->findAll($criteria);
         foreach ($users as $user)
         {
-            $userList[$user->id] = $user->name;
+            if ($user->id != Yii::app()->user->id) {
+                if ($list == 'contact')
+                    if (Users::isUserInContactList($user->id)) $userList[$user->id] = $user->name;
+                if ($list != 'contact')
+                    if (!Users::isUserInContactList($user->id)) $userList[$user->id] = $user->name;
+            }
+
         }
         return $userList;
     }
