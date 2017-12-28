@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 27 2017 г., 23:34
--- Версия сервера: 5.5.53
+-- Время создания: Дек 28 2017 г., 10:53
+-- Версия сервера: 5.7.16
 -- Версия PHP: 7.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -38,13 +38,10 @@ CREATE TABLE `contact_list` (
 --
 
 INSERT INTO `contact_list` (`id`, `id_request`, `id_response`, `status`) VALUES
-(2, 1, 4, 0),
-(3, 2, 4, 0),
-(5, 1, 6, 0),
-(9, 6, 2, 0),
-(10, 6, 4, 0),
-(11, 1, 5, 0),
-(12, 1, 2, 0);
+(13, 1, 2, 1),
+(14, 1, 5, 1),
+(16, 7, 1, 0),
+(17, 2, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -66,18 +63,12 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `id_sender`, `id_response`, `message`, `time`, `seen`) VALUES
-(1, 1, 2, 'HI fghkjhadfkjh sfdhjgkjh kajhfg kjh dfashkjkha dfhkjh adsfkjhkewhjad kjhasdfkj kjhkjahdkjhekj ', '2017-12-26 05:25:14', 1),
-(2, 2, 1, 'HI too', '2017-12-26 05:26:14', 1),
-(3, 4, 1, 'hi 5', '2017-12-18 11:13:32', 1),
-(4, 1, 6, 'fdgagfa', '2017-12-14 10:15:36', 1),
-(5, 1, 2, 'dfgh', '2017-12-26 23:31:08', 1),
-(6, 2, 1, 'HI admin', '2017-12-27 00:09:09', 1),
-(7, 2, 4, 'Helo Brother', '2017-12-27 00:16:37', 0),
-(8, 1, 6, 'fdg', '2017-12-27 22:55:57', 1),
-(9, 1, 4, 'fdg', '2017-12-28 00:33:45', 0),
-(10, 6, 4, 'Please add me to your contact list', '2017-12-28 01:02:00', 0),
-(11, 1, 5, 'Please add me to your contact list', '2017-12-28 01:25:58', 0),
-(12, 1, 2, 'Please add me to your contact list', '2017-12-28 01:34:13', 1);
+(13, 1, 2, 'Please add me to your contact list', '2017-12-28 07:42:22', 1),
+(14, 1, 5, 'Please add me to your contact list', '2017-12-28 09:58:54', 1),
+(16, 2, 1, 'Hi admin', '2017-12-28 10:20:45', 1),
+(17, 7, 1, 'Please add me to your contact list', '2017-12-28 11:01:52', 1),
+(18, 1, 2, 'Hi User', '2017-12-28 11:07:18', 1),
+(26, 2, 5, 'Please add me to your contact list', '2017-12-28 12:52:11', 1);
 
 -- --------------------------------------------------------
 
@@ -100,12 +91,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `status`, `online`, `last_activity`) VALUES
-(1, 'admin', 'admin', 'admin@admin.ru', 'Hello World!', 1, '2017-12-28 01:34:15'),
-(2, 'user', 'user', 'user@user.ru', 'User here', 1, '2017-12-28 00:53:47'),
-(4, 'user1', '123', '123', '1123', 0, '2017-12-28 00:54:45'),
-(5, '1', '1', 'admin1@admin.ru', 'asdf', 1, NULL),
-(6, '123', '1', '3axhax@mail.ru', '1', 1, '2017-12-28 01:02:19'),
-(7, '123', '1', '3axhax@gmail.com', '1234', 0, NULL);
+(1, 'admin', 'admin', 'admin@admin.ru', 'Hello World!', 0, '2017-12-28 12:41:52'),
+(2, 'user', 'user', 'user@user.ru', 'User here', 0, '2017-12-28 12:52:11'),
+(5, '1', '1', '1@mail.ru', 'asdf', 0, '2017-12-28 12:52:48'),
+(6, '123', '123', '123@mail.ru', '1', 0, '2017-12-28 01:02:19'),
+(7, '1234', '1234', '1234@gmail.com', '1234', 0, '2017-12-28 11:01:54');
 
 -- --------------------------------------------------------
 
@@ -127,7 +117,7 @@ CREATE TABLE `yiisession` (
 --
 
 INSERT INTO `yiisession` (`id`, `expire`, `data`, `user_id`, `last_activity`, `last_ip`) VALUES
-('nuiirr63kg4rp967ua4oe1ar253oqbmt', 1514408314, 0x66373830656334346333303239616337333361303066646336663961326363395f5f69647c733a313a2232223b66373830656334346333303239616337333361303066646336663961326363395f5f6e616d657c733a343a2275736572223b66373830656334346333303239616337333361303066646336663961326363395f5f7374617465737c613a303a7b7d, 2, '2017-12-28 01:34:34', '127.0.0.1');
+('8i5h8n5nhmlqhfri5gf2rl69gcscngt3', 1514449009, '', NULL, '2017-12-28 12:52:49', '127.0.0.1');
 
 --
 -- Индексы сохранённых таблиц
@@ -165,12 +155,12 @@ ALTER TABLE `yiisession`
 -- AUTO_INCREMENT для таблицы `contact_list`
 --
 ALTER TABLE `contact_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --

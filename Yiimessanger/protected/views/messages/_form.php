@@ -18,14 +18,15 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id_sender'); ?>
-		<?php echo $form->textField($model,'id_sender', array('disabled'=>true, 'value' => Yii::app()->user->name)); ?>
+		<?php echo $form->label($model,'id_sender', array('label' => 'From: '.Yii::app()->user->name)); ?>
+		<?php echo $form->textField($model,'id_sender', array('hidden'=>true, 'value' => Yii::app()->user->name)); ?>
 		<?php echo $form->error($model,'id_sender'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'id_response'); ?>
-		<?php echo $form->dropDownList($model,'id_response', Messages::getUserList($list), array('options' => [$model->id_response =>['selected'=>true]])); ?>
+		<?php echo $form->label($model,'id_response', array('label' => 'To: '.Users::model()->findByPk($model->id_response)->name)); ?>
+		<?php //echo $form->dropDownList($model,'id_response', Messages::getUserList($list), array('options' => [$model->id_response =>['selected'=>true]])); ?>
+		<?php echo $form->textField($model,'id_response', array('hidden'=>true, 'value' => $model->id_response)); ?>
 		<?php echo $form->error($model,'id_response'); ?>
 	</div>
 

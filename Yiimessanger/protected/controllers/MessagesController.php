@@ -71,22 +71,31 @@ class MessagesController extends Controller
 		$model=new Messages;
 		$list = 'contact';
 		if (isset($_GET['request'])) $list = 'request';
-        if (isset($_GET['id_response'])) $model->id_response = $_GET['id_response'];
-		if(isset($_POST['Messages']))
-		{
-			$model->attributes = $_POST['Messages'];
-			$model->id_sender = Yii::app()->user->id;
-			$model->time = new CDbExpression('NOW()');
-			if ($list == 'request') {
-				$model->message = 'Please add me to your contact list';
-				Users::requestToContactList($model->id_response);
-			}
-			if($model->save())
-				$this->redirect(array('index','inOut'=>'in'));
-		}
+        if (isset($_GET['id_response'])) {
 
+            $model->id_response = $_GET['id_response'];
+
+            if (isset($_POST['Messages'])) {
+                $model->attributes = $_POST['Messages'];
+                $model->id_sender = Yii::app()->user->id;
+                $model->time = new CDbExpression('NOW()');
+                if ($list == 'request') {
+                    $model->message = 'Please add me to your contact list';
+                    Users::requestToContactList($model->id_response);
+                }
+                $model->save();
+            }
+            
+            //history old message
+            
+            $history = Messages::model()->findAll(array(
+                'condition' => '(id_sender="' . Yii::app()->user->id . '" and id_response="' . $_GET['id_response'] . '") or (id_sender="' . $_GET['id_response'] . '" and id_response="' . Yii::app()->user->id . '")',
+                'order' => 'time DESC'
+            ));
+        }
 		$this->render('create',array(
 			'model'=>$model,
+            'history' => $history,
 			'list'=>$list,
 		));
 	}

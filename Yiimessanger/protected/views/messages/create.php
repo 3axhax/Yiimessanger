@@ -11,3 +11,12 @@ $this->menu=array(
 
 <h1>Create Messages</h1>
 <?php $this->renderPartial('_form', array('model'=>$model, 'list'=>$list)); ?>
+
+<?php
+foreach ($history as $message)
+{
+	//echo '<pre>';
+	//var_dump($message);
+	$this->renderPartial('_view', array('model'=>$message));
+}
+?>

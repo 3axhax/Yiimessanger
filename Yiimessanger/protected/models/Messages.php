@@ -100,6 +100,8 @@ class Messages extends CActiveRecord
 		));
 	}
 
+	//filter columns for display incoming/outcoming messages
+
 	public function columnForMessages($inOut)
 	{
 		$columns = array(
@@ -119,7 +121,7 @@ class Messages extends CActiveRecord
 			),
 			array(
 				'class'=>'CButtonColumn',
-				'template' => '{view}'.(($inOut == 'in') ? '&nbsp;{message}' : ''),
+				'template' => '{view}&nbsp;{message}&nbsp;{addcontact}',
 				'buttons'=>array
 				(
 					'view' => array
@@ -128,9 +130,17 @@ class Messages extends CActiveRecord
 					),
 					'message' => array
 					(
+						'visible' => (($inOut == 'in') ? '(Users::isUserInContactList($data->id_sender))' : 'false'),
 						'label'=>'Answer',
 						'url'=>'Yii::app()->getUrlManager()->createUrl("/messages/create", array("id_response" => $data->id_sender))',
 						'imageUrl' => Yii::app()->request->baseUrl.'/images/answer-16.png',
+					),
+					'addcontact' => array
+					(
+						'visible' => '(Users::isUserRequestToContactList($data->id_sender) && !Users::isUserInContactList($data->id_sender) && ($data->id_sender != Yii::app()->user->id))',
+						'label'=>'Add to contact list',
+						'url'=>'Yii::app()->getUrlManager()->createUrl("/users/addcontactlist", array("id_sender" => $data->id_sender))',
+						'imageUrl' => Yii::app()->request->baseUrl.'/images/add-contact-16.png',
 					),
 				),
 			),
@@ -150,6 +160,8 @@ class Messages extends CActiveRecord
 		}
 		return $columns;
 	}
+
+	//get User List "in contact list"/"no contact list"
 
     public static function getUserList($list = 'contact')
     {

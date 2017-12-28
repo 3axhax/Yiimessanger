@@ -91,19 +91,20 @@ class Users extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		//$criteria->compare('id',array('0'=>1, '1'=>2));
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('online',$this->online);
-        if ($list == 'contact list')$criteria->compare('id',Users::getContactList());
+        if ($list == 'contact list')$criteria->compare('id',((Users::getContactList() !== null) ? Users::getContactList() : array('0'=>0)));
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
+
+    //get online status from session table
+
 	public function getOnlineStatus()
 	{
         $sql = "SELECT yiisession.user_id FROM yiisession WHERE user_id=" . $this->id;
@@ -112,6 +113,8 @@ class Users extends CActiveRecord
 
 		return $online;
 	}
+
+    //get contact list
 
     public static function getContactList()
     {
@@ -124,11 +127,17 @@ class Users extends CActiveRecord
         }
         return $contact_list;
     }
+
+    //check is User in Contact List
+
 	public static function isUserInContactList($user_id)
 	{
 		$contact_list = Users::getContactList();
 		return ($contact_list === null ) ? false : in_array($user_id, $contact_list);
 	}
+
+    //get Users list whom current User send request to add on contact list
+
 	public static function getRequestList()
 	{
 		$user_id = Yii::app()->user->id;
@@ -139,20 +148,40 @@ class Users extends CActiveRecord
 		}
 		return $request_list;
 	}
+
+    //check is current User send request to $user_id to add on contact list
+
 	public static function isRequestToContactList($user_id)
 	{
 		$request_list = Users::getRequestList();
 		return ($request_list === null ) ? false : in_array($user_id, $request_list);
 	}
-	public static function getRequestListToUser ($user_id)
+
+    //get User list who sent request to add on Contact list to current user
+
+	public static function getRequestListToUser ()
 	{
-		$list = ContactList::model()->findAll('id_response="'.$user_id.'" and status=0' );
+		$list = ContactList::model()->findAll('id_response="'.Yii::app()->user->id.'" and status=0' );
 		foreach ($list as $contact)
 		{
-			$request_list[] = $contact->id_response;
+			$request_list[] = $contact->id_request;
 		}
 		return $request_list;
 	}
+
+    //check is $user_id send request to current User to add on contact list
+    
+    public static function isUserRequestToContactList($user_id)
+    {
+        $request_list = Users::getRequestListToUser ();
+        return ($request_list === null ) ? false : in_array($user_id, $request_list);
+    }
+    public static function addToContactList($id_sender)
+    {
+        $contact = ContactList::model()->find('id_request="'.$id_sender.'" and id_response="'.Yii::app()->user->id.'"');
+        $contact->status = 1;
+        $contact->save();
+    }
 	public static function requestToContactList($user_id)
 	{
 		$contact = new ContactList();

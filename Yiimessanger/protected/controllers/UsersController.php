@@ -32,7 +32,7 @@ class UsersController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'addcontactlist'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -123,6 +123,15 @@ class UsersController extends Controller
 			'model'=>$model,
 			'contact_list' => $contact_list,
 		));
+	}
+
+	public function actionAddContactList()
+	{
+		if (isset($_GET['id_sender']))
+		{
+			Users::addToContactList($_GET['id_sender']);
+			$this->redirect(array('index'));
+		}
 	}
 
 	/**

@@ -5,8 +5,8 @@
 $this->menu=array(
 	array('label'=>'Incoming Messages', 'url'=>array('index', 'inOut' => 'in')),
 	array('label'=>'Outgoing Messages', 'url'=>array('index', 'inOut' => 'out')),
-	(($model->id_sender != Yii::app()->user->id) ? array('label'=>'Answer', 'url'=>array('create', 'id_response' => $model->id_sender)) : NULL),
-	((Users::getRequestListToUser($model->id_response)) ? array('label'=>'Add', 'url'=>array('create', 'id_response' => $model->id_sender)) : NULL),
+	(($model->id_sender != Yii::app()->user->id && Users::isUserInContactList($model->id_sender)) ? array('label'=>'Answer', 'url'=>array('create', 'id_response' => $model->id_sender)) : NULL),
+	((Users::isUserRequestToContactList($model->id_sender) && ($model->id_sender != Yii::app()->user->id) && !Users::isUserInContactList($model->id_sender)) ? array('label'=>'Add', 'url'=>array('users/addcontactlist', 'id_sender' => $model->id_sender)) : NULL),
 );
 ?>
 

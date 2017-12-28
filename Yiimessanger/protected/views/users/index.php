@@ -5,13 +5,13 @@ $this->menu=array(
 );
 ?>
 
-<h1>Users List</h1>
+<h1>Users <?= ($contact_list == 'contact list') ? 'Contact' : ''?> List</h1>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'users-grid',
 	'dataProvider'=>$model->search($contact_list),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
 		'name',
 		'email',
 		'status',
@@ -39,7 +39,7 @@ $this->menu=array(
 				'request' => array
                 (
 					'visible' => '!Yii::app()->user->isGuest && !Users::isUserInContactList($data->id) && !Users::isRequestToContactList($data->id) && $data->id != Yii::app()->user->id',
-                    'label'=>'Request to added to Contact List',
+                    'label'=>'Request to added on Contact List',
 					'url'=>'Yii::app()->getUrlManager()->createUrl("/messages/create", array("id_response" => $data->id, "request" => true))',
                     'imageUrl' => Yii::app()->request->baseUrl.'/images/add-contact-16.png',
                 ),
